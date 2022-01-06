@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>ユーザー情報の登録</title>
+        <h:outputStylesheet name="style.css" library="css" />
+    </h:head>
+    <h:body>
+        <h2>ユーザー情報の登録</h2>
+        <hr/>
+        <h:form>
+        <h:panelGrid columns="2" >
+            <h:outputLabel value="ユーザーID ： "/>
+            <h:inputText id="id" value="#{backingUser02.id}" size="20"/>
+
+            <h:outputLabel value="氏名 ： "/>
+            <h:inputText id="name" value="#{backingUser02.name}"  size="20"/>
+
+            <h:outputLabel value="郵便番号 ："/>
+            <h:inputText id="zipcode" value="#{backingUser02.zipcode}"  size="20"/>
+
+            <h:outputLabel value="住所 ："/>
+            <h:inputText id="address" value="#{backingUser02.address}"  size="40"/>        </h:panelGrid>
+            
+        <h:panelGrid columns="2">
+            <h:commandButton value="登録"  action="#{backingUser02.register()}"/>
+
+            <h:commandButton value="クリア" action="#{backingUser02.clear()}" >
+            <f:ajax execute="@this" render="@all"/>
+            </h:commandButton>
+        </h:panelGrid>
+        </h:form>
+        <hr/>
+        <h:dataTable value="#{backingUser02.data}" var="item" border="1" styleClass="dt">
+            <h:column><h:outputText value="#{item.id}"/></h:column>
+            <h:column><h:outputText value="#{item.name}"/></h:column>
+            <h:column><h:outputText value="#{item.zipcode}"/></h:column>
+            <h:column><h:outputText value="#{item.address}"/></h:column>
+        </h:dataTable>  
+    </h:body>
+</html>
+
+
+
